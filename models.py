@@ -106,9 +106,9 @@ def getName(gender):
     lista_nombres_femeninos = ['Monica', 'Rosa', 'Juana', 'Julia', 'Adela', 'Sara', 'Carmen', 'Ana', 'Imelda', 'Evelia']
 
     if gender is 'male':
-        return lista_nombres_masculinos[random.randint(1, len(lista_nombres_masculinos))]
+        return lista_nombres_masculinos[random.randint(1, len(lista_nombres_masculinos)) -1]
     else: 
-        return lista_nombres_femeninos[random.randint(1, len(lista_nombres_femeninos))]
+        return lista_nombres_femeninos[random.randint(1, len(lista_nombres_femeninos)) -1]
 
 def getRandomGender():
     genders = ['male', 'female']
