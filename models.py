@@ -35,6 +35,7 @@ class Dummy:
 class DummyList:
 
     stack = []
+    summary_data = []
     generation = 0
     year = 0
 
@@ -58,6 +59,7 @@ class DummyList:
                                                              )
 
     def terminate(self, dummy):
+        """ kills a dummy. Not a murder, Just a natural die"""
         if dummy in self.stack:
             self.stack.remove(dummy)
 
@@ -68,11 +70,13 @@ class DummyList:
         self.generation += 1 
     
     def next_year(self):
+        """ Displace time one year forward. It means all created dummies increase his age one year."""
         self.year +=1 
         for dummy in self.stack:
             dummy.age += 1
     
     def find_wife(self):
+        """ Dummies can get marriage. This method try to find a partner to a male dummy. """
         for male in self._get_males():
             for female in self._get_females():
                 try:
@@ -82,6 +86,7 @@ class DummyList:
                     pass
 
     def get_couples(self):
+        """ Return couples created by marriage. In this imaginary world only consider traditional marriages"""
         return [(dummy, dummy.marriaged) for dummy in self.stack if dummy.gender is 'male' and dummy.marriaged is not None]
 
     def set_babies(self):
@@ -91,6 +96,9 @@ class DummyList:
                 baby.parents = couple
                 self.add(baby)
             
+    def symmary(self):
+        pass
+
     def _get_females(self):
         return [dummy for dummy in self.stack if dummy.gender == 'female' and dummy.marriaged is None]
     
