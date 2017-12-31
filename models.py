@@ -11,7 +11,11 @@ class Dummy:
         self.money = 100
         self.age = 0
         self.gender = getRandomGender()
-        self.name =  getName(self.gender) +" "+ getRandomName()
+        if self.parents[0] is not None:
+            surname = self.parents[0]
+        else:
+            surname = getSurname()
+        self.name =  getName(self.gender) +" "+ surname
         # Concepto de generacion
 
     def getMarriage(self, dummy):
@@ -27,9 +31,6 @@ class Dummy:
     def __repr__(self):
         return self.name
 
-    def __call__(self, *args, **kwargs):
-        if self.age > 40:
-            print "Mayor de 40"
 
 class DummyList:
 
@@ -43,7 +44,7 @@ class DummyList:
     def add(self, dummy):
         self.stack.append(dummy)
 
-    def show(self):
+    def show_all(self):
         for dummy in self.stack:
             print """name: {name}
                         gender: {gender}
@@ -96,9 +97,10 @@ class DummyList:
     def _get_males(self):
         return [dummy for dummy in self.stack if dummy.gender == 'male' and dummy.marriaged is None]    
 
-def getRandomName():
-    N = 10
-    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))     
+def getSurname():
+
+    lista_apellidos = ['Alvarez', 'Lopez', 'Martinez', 'Perez', 'Fernandez', 'Garcia', 'Sanchez', 'Rodriguez', 'Diaz', 'Sanz', 'Castellanos', 'Triguero', 'Gago', 'Ramos']     
+    return lista_apellidos[random.randint(1, len(lista_apellidos)) -1]
 
 def getName(gender):
 
