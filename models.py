@@ -83,7 +83,7 @@ class DummyList:
         for male in self._get_males():
             for female in self._get_females():
                 try:
-                    if 3 > random.randint(1, 10):
+                    if 2 > random.randint(1, 10):
                         male.getMarriage(female)
                 except ValueError:
                     pass
@@ -100,8 +100,11 @@ class DummyList:
                 baby.parents = couple
                 self.add(baby)
             
-    def symmary(self):
-        print "males: females: couples: "
+    def summary(self):
+        print "males: {males} females: {females} couples: {couples} ".format(males=len(self._get_males()),
+                                                                             females=len(self._get_females()),
+                                                                             couples=len(self._get_couples()),
+                                                                             )
 
     def _get_females(self):
         return [dummy for dummy in self.stack if dummy.gender == 'female' and dummy.marriaged is None]
@@ -109,6 +112,8 @@ class DummyList:
     def _get_males(self):
         return [dummy for dummy in self.stack if dummy.gender == 'male' and dummy.marriaged is None]    
 
+    def _get_couples(self):
+        return [(dummy, dummy.marriaged) for dummy in self.stack if dummy.marriaged is not None]
 
 def getSurname():
 

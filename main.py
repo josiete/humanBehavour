@@ -8,8 +8,8 @@ def main():
         dummy_list.next_year()
         dummy_list.find_wife()
         dummy_list.set_babies()
-        print "YEAR: {0}".format(dummy_list.year)
-    
+        # print "YEAR: {0}".format(dummy_list.year)
+        dummy_list.summary() 
 
 if __name__ == "__main__":
     main()
