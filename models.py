@@ -69,14 +69,14 @@ class DummyList:
         for i in range(n):
             self.stack.append(Dummy())
         self.generation += 1
- 
+
     def next_year(self):
         """ Displace time one year forward.
         It means all created dummies increase his age one year."""
-        self.year += 1 
+        self.year += 1
         for dummy in self.stack:
             dummy.age += 1
- 
+
     def find_wife(self):
         """ Dummies can get marriage.
             This method try to find a partner to a male dummy. """
@@ -89,7 +89,8 @@ class DummyList:
                     pass
 
     def get_couples(self):
-        """ Return couples created by marriage. In this imaginary world only consider traditional marriages"""
+        """ Return couples created by marriage.
+        In this imaginary world only consider traditional marriages"""
         return [(dummy, dummy.marriaged) for dummy in self.stack if dummy.gender is 'male' and dummy.marriaged is not None]
 
     def set_babies(self):
@@ -100,7 +101,7 @@ class DummyList:
                 self.add(baby)
             
     def symmary(self):
-        pass
+        print "males: females: couples: "
 
     def _get_females(self):
         return [dummy for dummy in self.stack if dummy.gender == 'female' and dummy.marriaged is None]
@@ -108,10 +109,25 @@ class DummyList:
     def _get_males(self):
         return [dummy for dummy in self.stack if dummy.gender == 'male' and dummy.marriaged is None]    
 
+
 def getSurname():
 
-    lista_apellidos = ['Alvarez', 'Lopez', 'Martinez', 'Perez', 'Fernandez', 'Garcia', 'Sanchez', 'Rodriguez', 'Diaz', 'Sanz', 'Castellanos', 'Triguero', 'Gago', 'Ramos']     
+    lista_apellidos = ['Alvarez',
+                       'Lopez',
+                       'Martinez',
+                       'Perez',
+                       'Fernandez',
+                       'Garcia',
+                       'Sanchez',
+                       'Rodriguez',
+                       'Diaz',
+                       'Sanz',
+                       'Castellanos',
+                       'Triguero',
+                       'Gago',
+                       'Ramos']     
     return lista_apellidos[random.randint(1, len(lista_apellidos)) - 1]
+
 
 def getName(gender):
 
@@ -129,7 +145,16 @@ def getName(gender):
                                 'Roberto',
                                 'Alfonso',
                                 'Alonso']
-    lista_nombres_femeninos = ['Monica', 'Rosa', 'Juana', 'Julia', 'Adela', 'Sara', 'Carmen', 'Ana', 'Imelda', 'Evelia']
+    lista_nombres_femeninos = ['Monica',
+                               'Rosa',
+                               'Juana',
+                               'Julia',
+                               'Adela',
+                               'Sara',
+                               'Carmen',
+                               'Ana',
+                               'Imelda',
+                               'Evelia']
 
     if gender is 'male':
         return lista_nombres_masculinos[random.randint(1, len(lista_nombres_masculinos)) - 1]
